@@ -1,0 +1,20 @@
+.text-center {
+  text-align: center;
+}
+
+.card {
+  display: block;
+  padding: 1rem;
+  border: #ccc 1px dotted;
+  margin: 0.7rem 0;
+}
+
+.round-img {
+  border-radius: 50%;
+}
+
+.btn {
+  background-color: crimson;
+  border-radius: 0;
+  border: crimson;
+}

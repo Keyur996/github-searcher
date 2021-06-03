@@ -1,0 +1,22 @@
+<ng-container *ngFor="let user of users">
+  <div class="card text-center">
+    <img
+      [src]="user?.avatar_url"
+      [alt]="user?.login"
+      class="round-img"
+      width="60"
+      height="60"
+    />
+
+    <div>
+      <h3>{{ user.login }}</h3>
+      <button
+        [routerLink]="['/user', user.login]"
+        routerLinkActive="active"
+        class="btn btn-sm btn-dark my-1"
+      >
+        More Info
+      </button>
+    </div>
+  </div>
+</ng-container>

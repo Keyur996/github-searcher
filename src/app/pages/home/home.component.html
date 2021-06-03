@@ -1,0 +1,21 @@
+<div class="container">
+  <form
+    class="form-inline mt-4 d-flex justify-content-center"
+    (ngSubmit)="handleSearch()"
+  >
+    <div class="form-group">
+      <label for="userName">User Name</label>
+      <input
+        [(ngModel)]="text"
+        type="text"
+        id="userName"
+        class="form-control mx-sm-3"
+        name="userName"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Find User</button>
+  </form>
+  <div class="mt-3" *ngIf="users">
+    <app-searched-users [users]="users"></app-searched-users>
+  </div>
+</div>
