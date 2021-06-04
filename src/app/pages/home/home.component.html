@@ -9,13 +9,22 @@
         [(ngModel)]="text"
         type="text"
         id="userName"
+        #searchText
         class="form-control mx-sm-3"
         name="userName"
       />
     </div>
     <button type="submit" class="btn btn-primary">Find User</button>
+    <button
+      type="button"
+      *ngIf="users.length > 0"
+      (click)="clear()"
+      class="ml-2 btn btn-light"
+    >
+      Clear
+    </button>
   </form>
-  <div class="mt-3" *ngIf="users">
+  <div class="mt-3" *ngIf="users.length > 0">
     <app-searched-users [users]="users"></app-searched-users>
   </div>
 </div>

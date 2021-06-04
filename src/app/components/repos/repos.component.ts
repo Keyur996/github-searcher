@@ -15,6 +15,8 @@ import {
 export class ReposComponent implements OnInit, OnChanges {
   @Input('repoUrl') repoUrl!: string;
   repos: any[] = [];
+  page: number = 1;
+  pageSize: number = 10;
 
   constructor(private _github: GithubService, private ref: ChangeDetectorRef) {}
 

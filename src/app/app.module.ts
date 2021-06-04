@@ -1,9 +1,11 @@
+import { LoaderInterceptor } from './common/loader.interceptor';
+import { LoaderService } from './services/loader.service';
 import { GithubService } from './services/github.service';
 import { AuthService } from './services/auth.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -24,6 +26,7 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchedUsersComponent } from './pages/searched-users/searched-users.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { UserDetailComponent } from './pages/user-detail/user-detail.component';
     SignupComponent,
     SearchedUsersComponent,
     UserDetailComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,16 @@ import { UserDetailComponent } from './pages/user-detail/user-detail.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
   ],
-  providers: [AuthService, GithubService],
+  providers: [
+    AuthService,
+    GithubService,
+    LoaderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

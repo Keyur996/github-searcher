@@ -9,7 +9,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   text: string = '';
-  users!: any[];
+  users: any[] = [];
   constructor(private _github: GithubService, private _toastr: ToastrService) {}
 
   ngOnInit(): void {}
@@ -26,5 +26,9 @@ export class HomeComponent implements OnInit {
         this._toastr.error('Something went wrong!!');
       }
     );
+  }
+
+  clear() {
+    this.users = [];
   }
 }
